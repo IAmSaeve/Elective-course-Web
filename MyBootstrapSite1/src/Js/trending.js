@@ -16,7 +16,7 @@ function getMovies () {
   xhr.onload = function () {
     var xhrResult = JSON.parse(xhr.responseText)
     movies = xhrResult.results
-    if (xhr.readyState === 4 && xhr.status === 200) {
+    if (xhr.status === 200) {
       genSite()
     } else {
       var errorHeader = document.createElement('h1')
@@ -26,7 +26,7 @@ function getMovies () {
       console.error(xhrResult.status_message)
     }
   }
-  xhr.send(null)
+  xhr.send()
 }
 
 window.addEventListener('load', getMovies)
