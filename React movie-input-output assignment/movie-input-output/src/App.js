@@ -7,7 +7,15 @@ import MoviePoster from './MoviePoster';
 
 
 class App extends Component {
-  state = { movies: MOCK_MOVIES };
+  state = {
+    movies: MOCK_MOVIES,
+    selectedMovie: MOCK_MOVIES[0]
+  };
+
+  movieSelectionChanged = (movie) => {
+    this.setState( {selectedMovie: movie} );
+  };
+
   render() {
     return (
       <div className="App">
@@ -15,8 +23,8 @@ class App extends Component {
           <h1>React Movies <img alt="Movie" src={MovieImg}></img> </h1>
           This small App demonstrates communication between child-components using Input/Output
         </div>
-        <MovieList />
-        <MoviePoster movies={this.state.movies} />
+        <MovieList OnMovieChange={this.movieSelectionChanged} />
+        <MoviePoster Poster={this.state.selectedMovie.Poster}/>
       </div>
     );
   }
