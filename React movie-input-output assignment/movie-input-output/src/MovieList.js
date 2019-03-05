@@ -9,14 +9,14 @@ class MovieList extends Component {
     console.log(MOCK_MOVIES);
 
     return (
-      
+
       <div className="MovieList">
         <div className="movie-group">
           <h2>Movie list:</h2>
           <ul className="movies">
-            {MOCK_MOVIES.map(movie => {return <li>{movie.Title}{movie.Year}</li>}) }
-        </ul>
-      </div>
+            {MOCK_MOVIES.map(movie => { return <li>{movie.Title}{movie.Year}</li> })}
+          </ul>
+        </div>
       </div>
     );
   }
