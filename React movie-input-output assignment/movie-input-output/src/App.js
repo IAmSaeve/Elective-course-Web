@@ -13,7 +13,7 @@ class App extends Component {
   };
 
   movieSelectionChanged = (movie) => {
-    this.setState( {selectedMovie: movie} );
+    this.setState({ selectedMovie: movie });
   };
 
   render() {
@@ -23,8 +23,13 @@ class App extends Component {
           <h1>React Movies <img alt="Movie" src={MovieImg}></img> </h1>
           This small App demonstrates communication between child-components using Input/Output
         </div>
-        <MovieList OnMovieChange={this.movieSelectionChanged} />
-        <MoviePoster Poster={this.state.selectedMovie.Poster}/>
+        <div className="container-fluid">
+        <div className="row">
+          <MovieList OnMovieChange={this.movieSelectionChanged} />
+          <MoviePoster Poster={this.state.selectedMovie.Poster} />
+          </div>
+        </div>
+
       </div>
     );
   }

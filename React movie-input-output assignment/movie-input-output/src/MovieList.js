@@ -11,12 +11,14 @@ class MovieList extends Component {
 
   render() {
     return (
-      <div className="MovieList">
-        <div className="movie-group">
-          <h2>Movie list:</h2>
-          <ul className="movies">
-            {MOCK_MOVIES.map(movie => { return <li key={movie.Title} onClick={ () => this.MovieChange(movie)}>{movie.Title}{movie.Year}</li> })}
-          </ul>
+      <div className="col">
+        <div className="MovieList float-right">
+          <div className="movie-group">
+            <h2 className="ml-5">Movie list:</h2>
+            <ul className="movies">
+              {MOCK_MOVIES.map(movie => { return <li key={movie.Title} onClick={() => this.MovieChange(movie)}>{movie.Title}{movie.Year}</li> })}
+            </ul>
+          </div>
         </div>
       </div>
     );
