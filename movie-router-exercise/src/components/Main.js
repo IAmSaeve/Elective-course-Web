@@ -3,6 +3,7 @@ import About from './About';
 import UnderConstruction from './UnderConstruction';
 import { Switch, Route } from 'react-router-dom';
 import MovieDetail from "./MovieDetail";
+import Movies from './Movies';
 
 class Main extends Component {
 
@@ -13,7 +14,7 @@ class Main extends Component {
             <div className="col-1"></div>
               <div className="col-8">
           <Switch>
-            <Route exact path='/' component={UnderConstruction}></Route>
+            <Route exact path='/' component={Movies}></Route>
             <Route path='/About' component={About}></Route>
             <Route path='/Admin' component={UnderConstruction}></Route>
             <Route path='/Login' component={UnderConstruction}></Route>
