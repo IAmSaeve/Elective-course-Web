@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-4" id="calc">
+    <h1></h1><br><br><br>
+    Number1: <input type="number" [(ngModel)]="number1" id="x"><br><br>
+    Number2: <input type="number" [(ngModel)]="number2" id="y"><br><br>
+    Result: {{result}} <br><br>
+    <button (click)="Add()">ADD</button>
+    <button (click)="Sub()">SUB</button>
+    <button (click)="Div()">DIV</button>
+    <button (click)="Mul()">MUL</button>
+  </div>
+  <div class="col-8"></div>
+</div>
