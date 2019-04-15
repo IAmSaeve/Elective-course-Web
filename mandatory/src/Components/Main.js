@@ -13,8 +13,8 @@ class Main extends Component {
     return (
       <main>
         <div className='row mr-0'>
-          <div className='col-1'></div>
-          <div className='col-8'>
+          <div className='col-xs-6 col'></div>
+          <div className='col-xs-6 col-md-8'>
             <Switch>
               <Route exact path='/' component={Home}></Route>
               <Route path='/DriverList' component={DriverList}></Route>
@@ -23,6 +23,7 @@ class Main extends Component {
               <Route path='/LapTimes' component={LapTimes}></Route>
             </Switch>
           </div>
+          <div className='col-xs-6 col'></div>
         </div>
       </main>
     )
