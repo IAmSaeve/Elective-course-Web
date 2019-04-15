@@ -12,5 +12,5 @@ export const fetchRaceResults = () => async dispatch => {
 
 export const fetchRaceSchedule = () => async dispatch => {
     const response = await ergast.get('/api/f1/current.json')
-    dispatch({ type: 'FETCH_RACESCHEDULE', payload: response.data.MRData.RaceTable.Races[0].Results })
+    dispatch({ type: 'FETCH_RACESCHEDULE', payload: response.data.MRData.RaceTable.Races })
 }

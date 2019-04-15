@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchRaceResults } from '../Actions'
 
-class RaceRsults extends Component {
+class RaceResults extends Component {
     componentDidMount() {
         console.log(this.props)
         this.props.fetchRaceResults()
     }
 
     renderList() {
-        return this.props.reaceResults.map(result => {
+        return this.props.raceResults.map(result => {
             if (typeof result.Time === 'undefined') {
                 // eslint-disable-next-line
                 result.Time = new Object()
@@ -40,7 +40,7 @@ class RaceRsults extends Component {
 }
 
 const mapStateToProps = state => {
-    return { reaceResults: state.reaceResults }
+    return { raceResults: state.raceResults }
 }
 
-export default connect(mapStateToProps, { fetchRaceResults })(RaceRsults)
+export default connect(mapStateToProps, { fetchRaceResults })(RaceResults)
