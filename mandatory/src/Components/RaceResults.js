@@ -16,22 +16,22 @@ class RaceRsults extends Component {
                 result.Time.time = 'DNF'
             }
             return (
-                <li className='item' key={result.position}>
-                    <h4>Position: {result.position}</h4>
-                    <ul>
-                        <li>Name: {result.Driver.givenName} {result.Driver.familyName}</li>
-                        <li>Time: {result.Time.time}</li>
-                    </ul>
-                </li>
+                <div className='card card-body m-3' key={result.position}>
+                    <div className='text-wrap' style={{width: '150px'}}>
+                        <h5>Position: {result.position}</h5>
+                        <hr style={{borderWidth: '2px', borderColor: 'White'}}></hr>
+                        <p><b>Name:</b> {result.Driver.givenName} {result.Driver.familyName}</p>
+                        <p><b>Time:</b> {result.Time.time}</p>
+                    </div>
+                </div>
             )
         })
     }
 
     render() {
         return (
-            <div>
-                <h1>Showing top 20 results</h1>
-                <ul style={{ listStyle: 'none' }} className='namelist'>{this.renderList()}</ul>
+            <div className="d-flex align-content-around flex-wrap">
+                {this.renderList()}
             </div>
         )
     }
