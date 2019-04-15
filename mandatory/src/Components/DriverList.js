@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchDrivers } from '../Actions'
 
+// TODO: This class could use some styling
 class DriverList extends Component {
 
     componentDidMount() {

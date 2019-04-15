@@ -3,11 +3,12 @@ import logo from '../Assets/logo.jpg';
 import image1 from '../Assets/image1.jpg';
 import image2 from '../Assets/image2.jpg';
 
+// TODO: Extend this class to do some more, maybe.
 class Home extends Component {
     render() {
         return (
             <div>
-                <h3 className='mb-5 mt-2'>Welcome to the Formula 1 information website</h3>
+                <h3 className='mb-5 mt-2'>Formula 1 information website</h3>
                 {this.renderCarousel()}
             </div>
         )

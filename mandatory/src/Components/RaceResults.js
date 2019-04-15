@@ -20,7 +20,9 @@ class RaceRsults extends Component {
                     <div className='text-wrap' style={{width: '150px'}}>
                         <h5>Position: {result.position}</h5>
                         <hr style={{borderWidth: '2px', borderColor: 'White'}}></hr>
+                        {/* TODO: Make the driver a clickable link to a driver profile */}
                         <p><b>Name:</b> {result.Driver.givenName} {result.Driver.familyName}</p>
+                        {/* TODO: Make the time variable go red of driver DNF */}
                         <p><b>Time:</b> {result.Time.time}</p>
                     </div>
                 </div>
