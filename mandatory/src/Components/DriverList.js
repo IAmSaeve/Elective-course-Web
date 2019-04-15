@@ -3,8 +3,18 @@ import { connect } from 'react-redux'
 import { fetchDrivers } from '../Actions'
 
 class DriverList extends Component {
+
     componentDidMount() {
         this.props.fetchDrivers()
+    }
+
+    render() {
+        return (
+            <div>
+                <h3 className='pb-4'>F1 drivers in 2019:</h3>
+                <ul style={{ listStyle: 'none' }} className='namelist pl-0'>{this.renderList()}</ul>
+            </div>
+        )
     }
 
     renderList() {
@@ -16,20 +26,6 @@ class DriverList extends Component {
                 </li>
             )
         })
-    }
-
-    render() {
-        return (
-            <div className='row'>
-                <div className='col-1'>
-                </div>
-                <div className='col-4'>
-                    <h1>F1 drivers in 2019:</h1>
-                    <ul style={{ listStyle: 'none' }} className='namelist'>{this.renderList()}</ul>
-                </div>
-                <div className='col-7'></div>
-            </div>
-        )
     }
 }
 
