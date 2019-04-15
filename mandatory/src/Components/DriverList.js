@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchDrivers } from "../Actions";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchDrivers } from '../Actions'
 
 class DriverList extends Component {
     componentDidMount() {
-        this.props.fetchDrivers();
-    };
+        this.props.fetchDrivers()
+    }
 
     renderList() {
         return this.props.drivers.map(driver => {
@@ -16,7 +16,7 @@ class DriverList extends Component {
                 </li>
             )
         })
-    };
+    }
 
     render() {
         return (
@@ -25,7 +25,7 @@ class DriverList extends Component {
                 </div>
                 <div className='col-4'>
                     <h1>F1 drivers in 2019:</h1>
-                    <ul style={{ listStyle: "none" }} className='namelist'>{this.renderList()}</ul>
+                    <ul style={{ listStyle: 'none' }} className='namelist'>{this.renderList()}</ul>
                 </div>
                 <div className='col-7'></div>
             </div>
@@ -34,7 +34,7 @@ class DriverList extends Component {
 }
 
 const mapStateToProps = state => {
-    return { drivers: state.drivers };
+    return { drivers: state.drivers }
 }
 
-export default connect(mapStateToProps, { fetchDrivers })(DriverList);
+export default connect(mapStateToProps, { fetchDrivers })(DriverList)
