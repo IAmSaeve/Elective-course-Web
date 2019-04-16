@@ -4,7 +4,7 @@ import { fetchRaceResults } from '../Actions'
 
 class RaceResults extends Component {
     componentDidMount() {
-        console.log(this.props)
+        // console.log(this.props) // Debugging
         this.props.fetchRaceResults()
     }
 
