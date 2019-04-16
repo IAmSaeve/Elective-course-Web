@@ -1,55 +1,62 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchRaceSchedule } from '../Actions'
-import moment from 'moment';
-import { DateRange } from 'moment-range';
-import Dayz from 'dayz';
-import '../../node_modules/dayz/dist/dayz.css';
+import moment from 'moment'
+import { DateRange } from 'moment-range'
+import Dayz from 'dayz'
+import '../../node_modules/dayz/dist/dayz.css'
 
-
-
-// var t = ''
-// var s = new moment('2019-03-17 ' + t.slice(0, -1))
-
+const relativeDate = moment()
+var EVENTS = new Dayz.EventsCollection([])
 
 class RaceSchedule extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            EVENTS
+        }
+    }
+
     componentDidMount() {
-        // console.log(this.props)
         this.props.fetchRaceSchedule()
     }
 
+    // This check for changes before manipulating data
+    // This avoids undefined and other missing data errors
+    componentDidUpdate() {
+        this.state.EVENTS = new Dayz.EventsCollection([]) // TODO: This is bad. Use setState()
+        this.props.races.forEach((race) => {
+            const d = new moment(race.date + ' ' + race.time.slice(0, -1)) // Slice to remove trailing "Z"
+            this.state.EVENTS.add(
+                {
+                    content: race.raceName,
+                    range: new DateRange(d, d)
+                }
+            )
+        });
+    }
+
+    // TODO: Find way to reload calendar so data can be shown when loaded
+    // FIXME: White on white CSS bug
+    // FIXME: Event text not large enough
     render() {
-
-        const relativeDate = moment()
-        const EVENTS = new Dayz.EventsCollection([
-            {
-                content: 'A short event',
-                range: new DateRange(moment.now(),
-                    moment.now())
-            }
-        ]);
-
-        // FIXME: This shit not working fucking undefined my ass cock sucking mother fucker
-        // I am going to bed and you better be working tomorrow you fuck piece of shit!
-        if (typeof this.props.races === 'undefined') {
-            var s = new moment('2019-03-17 ' + this.props.races[0].time.slice(0, -1))
-            console.log(s)
-        }
-
-        // console.log(this.props.races) // Debugging
-
         return (
-            <div className='row' style={{ marginTop: '15rem' }}>
-                <div className='col' style={{ borderWidth: '3px', borderColor: 'White', borderStyle: 'solid' }}>
-                    <div className='p-3'>
+            <div className='container'>
+            <div className='row' style={{ marginTop: '10rem' }}>
+                <div className='col p-0' style={{ borderWidth: '3px', borderColor: 'White', borderStyle: 'solid'}}>
+                    <div className='p-3' style={{height: '33rem'}}>
                         <Dayz
                             display='month'
                             date={relativeDate}
-                            events={EVENTS}
+                            events={this.state.EVENTS}
                         />
                     </div>
                 </div>
+            </div>
+            <div className='row d-flex justify-content-center mt-3'>
+            <h4 style={{color: 'Red'}}>You temporarily have to press "Schedule" button again to see calendar data</h4>
+            </div>
             </div>
         )
     }
