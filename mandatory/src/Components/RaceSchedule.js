@@ -7,14 +7,13 @@ import Dayz from 'dayz'
 import './dayz.css'
 
 const relativeDate = moment()
-var EVENTS = new Dayz.EventsCollection([])
 
 class RaceSchedule extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            EVENTS
+            EVENTS: new Dayz.EventsCollection([])
         }
     }
 
@@ -24,20 +23,25 @@ class RaceSchedule extends Component {
 
     // This check for changes before manipulating data
     // This avoids undefined and other missing data errors
-    componentDidUpdate() {
-        this.state.EVENTS = new Dayz.EventsCollection([]) // TODO: This is bad. Use setState()
-        this.props.races.forEach((race) => {
-            const d = new moment(race.date + ' ' + race.time.slice(0, -1)) // Slice to remove trailing "Z"
-            this.state.EVENTS.add(
-                {
-                    content: race.raceName,
-                    range: new DateRange(d, d)
-                }
-            )
-        });
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.races !== this.props.races) {
+            var e = new Dayz.EventsCollection([])
+
+            this.props.races.forEach((race) => {
+                const d = new moment(race.date + ' ' + race.time.slice(0, -1)) // Slice to remove trailing "Z"
+                e.add(
+                    {
+                        content: race.raceName,
+                        range: new DateRange(d, d)
+                    }
+                )
+            });
+
+            this.setState({ EVENTS: e })
+        }
     }
 
-    // TODO: Find way to reload calendar so data can be shown when loaded
+
     // FIXME: White on white CSS bug
     render() {
         return (
@@ -52,9 +56,6 @@ class RaceSchedule extends Component {
                             />
                         </div>
                     </div>
-                </div>
-                <div className='row d-flex justify-content-center mt-3'>
-                    <h4 style={{ color: 'Red' }}>You temporarily have to press "Schedule" button again to see calendar data</h4>
                 </div>
             </div>
         )
