@@ -178,7 +178,8 @@
 }
 
 .dayz.month .days .day.outside {
-  background-color: #F2F2F2;
+  /* background-color: #F2F2F2; */
+  background-color: rgb(73, 73, 73);
 }
 
 .dayz .event {

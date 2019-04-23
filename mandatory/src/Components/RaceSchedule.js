@@ -42,13 +42,12 @@ class RaceSchedule extends Component {
     }
 
 
-    // FIXME: White on white CSS bug
     render() {
         return (
             <div className='container'>
                 <div className='row' style={{ marginTop: '10rem' }}>
                     <div className='col p-0' style={{ borderWidth: '3px', borderColor: 'White', borderStyle: 'solid' }}>
-                        <div className='p-3' style={{ height: '33rem' }}>
+                        <div className='p-3' style={{ height: '35rem' }}>
                             <Dayz
                                 display='month'
                                 date={relativeDate}
